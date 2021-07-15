@@ -1,4 +1,4 @@
-# Mobile Engingeer Test
+# Mobile Engineer Test
 
 This test is meant to be submitted within 48 hours of receipt. We expect that you implement all tasks in the same project using Flutter. 
 

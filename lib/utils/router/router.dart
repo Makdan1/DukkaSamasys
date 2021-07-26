@@ -2,7 +2,7 @@ import 'package:dukka_samasys/ui/screens/create_employee/create_employee_view.da
 import 'package:dukka_samasys/ui/screens/employees/list_employee.dart';
 import 'package:flutter/material.dart';
 import 'package:dukka_samasys/utils/router/routeNames.dart';
-
+//This launch the right Page request by the navigation service
 Route<dynamic> generateRoute(RouteSettings settings) {
   switch (settings.name) {
 

@@ -5,7 +5,8 @@ import 'package:sqflite/sqflite.dart';
 
 Database db;
 
-class DatabaseHelper {
+class DatabaseService {
+  //Constant string declared
   static const employeeTable = 'employee';
   static const fullName = 'full_name';
   static const phoneNumber = 'phone_number';
@@ -25,24 +26,24 @@ class DatabaseHelper {
     }
     return path;
   }
-
+//Initialize the database
   static Future<void> initDatabase() async {
     final path = await getDatabasePath('samasys_db');
     db = await openDatabase(path,
         version: 2, onCreate: onCreate, onUpgrade: onUpgrade);
   }
-
+//Create the database
   static Future<void> onCreate(Database db, int version) async {
     print('function to create tables ');
     await createTables(db);
   }
-
+//upgrade the database
   static onUpgrade(Database db, int oldVersion, int newVersion) {
     if (oldVersion < newVersion) {
       db.execute("ALTER TABLE foldersTable ADD COLUMN date TEXT;");
     }
   }
-
+//Create tables to the database
   static Future<void> createTables(Database db) async {
     final messagesTable = '''CREATE TABLE $employeeTable(
       $id INTEGER PRIMARY KEY,
@@ -57,6 +58,7 @@ class DatabaseHelper {
     await db.execute(messagesTable);
   }
 
+  //Insert employee to the database
   static Future<int> insertEmployee(EmployeeData employeeData) async {
     int messageId = await db.insert(
       employeeTable,
@@ -67,6 +69,7 @@ class DatabaseHelper {
     return messageId;
   }
 
+  //Fetch the database
   Future<List<EmployeeData>> getEmployeeList() async {
     var result = await db.query(employeeTable, orderBy: '$id ASC');
 
@@ -85,7 +88,7 @@ class DatabaseHelper {
   }
 
 
-
+//Update the database
   Future<int> updateEmployee(EmployeeData employeeData) async {
     var result = await db.update(employeeTable, employeeData.toJson(),
         where: '$phoneNumber= ?', whereArgs: [employeeData.phoneNumber]);

@@ -6,13 +6,13 @@ import 'package:dukka_samasys/utils/validators.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
-
+//Screen to create employee
 class CreateEmployee extends StatefulWidget {
   @override
-  MoviesState createState() => new MoviesState();
+  CreateEmployeeState createState() => new CreateEmployeeState();
 }
 
-class MoviesState extends State<CreateEmployee> {
+class CreateEmployeeState extends State<CreateEmployee> {
   final formKey = GlobalKey<FormState>();
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
   @override

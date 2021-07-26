@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.dukka.dukka_samasys">
    <application
-        android:label="dukka_samasys"
+        android:label="Samasys"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"

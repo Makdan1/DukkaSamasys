@@ -2,6 +2,7 @@ import 'package:dukka_samasys/core/model/employee_data.dart';
 import 'package:dukka_samasys/utils/helpers.dart';
 import 'package:flutter/material.dart';
 
+//This is the widget that display the employee on a list
 class EmployeeItem extends StatelessWidget {
   final EmployeeData employeeData;
   final Function onTap;

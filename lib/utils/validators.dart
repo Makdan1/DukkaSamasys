@@ -1,3 +1,6 @@
+
+
+//This validates if the inputs on the TextBox is correct
 class Validators {
   String isEmpty(value) {
     if (value.isEmpty) {

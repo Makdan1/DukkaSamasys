@@ -16,6 +16,7 @@ class EmployeeDetail extends StatefulWidget {
 }
 
 class EmployeeDetailState extends State<EmployeeDetail> {
+  //The formats a number to a currency format
   final oCcy = new NumberFormat("#,##0.00", "en_US");
   @override
   Widget build(BuildContext context) {
@@ -106,6 +107,8 @@ class EmployeeDetailState extends State<EmployeeDetail> {
                       style:
                           TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
                     )),
+
+                //This loads dummy data stated on the view model
                 FutureBuilder<List<LoanRecordModel>>(
                     future: model.loan,
                     builder: (context, snapshot) {
@@ -160,7 +163,13 @@ class EmployeeDetailState extends State<EmployeeDetail> {
                                                     fontWeight:
                                                         FontWeight.bold),
                                               ),
-
+                                              Container(
+                                                width: 170,
+                                                child: Divider(
+                                                  thickness: 1,
+                                                  color: Colors.grey,
+                                                ),
+                                              ),
                                               Text(
                                                   'RECEIVABLE: ' +
                                                      "\u{20A6}"+ oCcy.format( loadData.receivable),

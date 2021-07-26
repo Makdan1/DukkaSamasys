@@ -5,7 +5,7 @@ import 'package:dukka_samasys/utils/locator.dart';
 import 'package:dukka_samasys/utils/progressBarManager/dialogModels.dart';
 import 'package:dukka_samasys/utils/progressBarManager/dialogService.dart';
 
-
+//This is for displaying progress bar when the app is busy
 class ProgressManager extends StatefulWidget {
   final Widget child;
   ProgressManager({Key key, this.child}) : super(key: key);

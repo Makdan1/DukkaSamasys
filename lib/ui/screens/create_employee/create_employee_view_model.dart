@@ -1,5 +1,4 @@
 import 'package:dukka_samasys/core/model/employee_data.dart';
-import 'package:dukka_samasys/core/services/auth_service.dart';
 import 'package:dukka_samasys/core/services/database_service.dart';
 import 'package:dukka_samasys/utils/baseModel.dart';
 import 'package:dukka_samasys/utils/helpers.dart';
@@ -10,17 +9,17 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 class CreateEmployeeViewModel extends BaseModel {
-  final MovieService _authentication = locator<MovieService>();
   final NavigationService _navigationService = locator<NavigationService>();
   TextEditingController fullNameController = TextEditingController();
   TextEditingController phoneController = TextEditingController();
   TextEditingController emailController = TextEditingController();
   TextEditingController positionController = TextEditingController();
   TextEditingController salaryController = TextEditingController();
+  final DatabaseService helper = locator<DatabaseService>();
 
   EmployeeData employeeData;
-  DatabaseHelper helper = DatabaseHelper();
 
+//Function to save an employee after the save button clicked
   saveEmployee() async {
     setBusy(true);
     var send = {
@@ -30,11 +29,13 @@ class CreateEmployeeViewModel extends BaseModel {
       "position": positionController.text,
       "salary": salaryController.text,
     };
+    //This convert the payload to the model
     EmployeeData msg = EmployeeData.fromJson(send);
     notifyListeners();
     print(msg);
     int result;
-    result = await DatabaseHelper.insertEmployee(msg);
+    //Then the model is passed to the database
+    result = await DatabaseService.insertEmployee(msg);
 
     if (result != 0) {
       setBusy(false);
@@ -48,7 +49,7 @@ class CreateEmployeeViewModel extends BaseModel {
       showToast("Problem Saving Employee'");
     }
   }
-
+//This clears all the controllers so user can start another profile
   clear() {
     fullNameController.clear();
     phoneController.clear();

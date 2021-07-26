@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-
+//Navigation service for moving from one screen to another is
+//Declared here
 class NavigationService {
   GlobalKey<NavigatorState> _navigationKey = GlobalKey<NavigatorState>();
   GlobalKey<NavigatorState> get navigationKey => _navigationKey;

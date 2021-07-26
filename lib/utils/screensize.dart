@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+//Phone screen size for responsive UI
 class Responsive{
   static width(BuildContext context)
   {

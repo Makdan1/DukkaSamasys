@@ -1,16 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:intl/intl.dart';
 import 'package:dukka_samasys/utils/colors.dart';
 
-customYMargin(double value) {
-  return SizedBox(height: value);
-}
-
-customXMargin(double value) {
-  return SizedBox(width: value);
-}
-
+//The are helpers which here is the toast message to avoid repetition
 showToast(String message) {
   Fluttertoast.showToast(
       msg: message,
@@ -36,22 +28,3 @@ showErrorToast(String message) {
       fontSize: 16.0);
 }
 
-String capitalize(val) {
-  return "${val[0].toUpperCase()}${val.substring(1)}";
-}
-
-formatDate(value) {
-  final df = new DateFormat('dd-MM-yyyy');
-  return df.format(DateTime.parse(value));
-}
-
-formatDateTime(value) {
-  final df = new DateFormat('d MMMM, y hh:mm a');
-  return df.format(DateTime.parse(value));
-}
-
-class Status {
-  static final sent = 'sent';
-  static final delivered = 'delivered';
-  static final read = 'read';
-}

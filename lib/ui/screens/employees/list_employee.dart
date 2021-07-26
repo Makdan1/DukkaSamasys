@@ -4,6 +4,9 @@ import 'package:dukka_samasys/ui/widget/employee_widget/employee_item.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 
+
+//List of employees screen
+
 class Employees extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {

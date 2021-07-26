@@ -4,16 +4,13 @@ import 'package:dukka_samasys/utils/progressBarManager/dialogModels.dart';
 import 'package:dukka_samasys/utils/progressBarManager/dialogService.dart';
 
 class BaseModel extends ChangeNotifier {
-  //final Authentication _authenticationService = locator<Authentication>();
+  //This gives a view model the ChangeNotifier value and makes
+  //Set busy available all over the application.
   final ProgressService _dialogService = locator<ProgressService>();
   ProgressResponse hh;
- // Data get currentUser => _authenticationService.currentUser;
 
   bool _busy = false;
   bool get busy => _busy;
-
-
-
 
   void setBusy(bool value) {
     _busy = value;

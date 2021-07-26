@@ -3,17 +3,17 @@ import 'package:dukka_samasys/core/model/loan_record_model.dart';
 import 'package:dukka_samasys/core/services/database_service.dart';
 import 'package:dukka_samasys/utils/baseModel.dart';
 import 'package:dukka_samasys/utils/helpers.dart';
+import 'package:dukka_samasys/utils/locator.dart';
 
 class EmployeeViewModel extends BaseModel {
   EmployeeData employeeData;
-  DatabaseHelper helper = DatabaseHelper();
-  DatabaseHelper databaseHelper = DatabaseHelper();
-  int count = 0;
-
+  final DatabaseService helper = locator<DatabaseService>();
   List<EmployeeData> employeeDataList = [];
 
+
+  //Get all the employess on the database
   getEmployees() async {
-    List<EmployeeData> res = await databaseHelper.getEmployeeList();
+    List<EmployeeData> res = await helper.getEmployeeList();
    if(res == null){
      employeeDataList =  [];
    }
@@ -25,10 +25,12 @@ class EmployeeViewModel extends BaseModel {
     return employeeDataList;
   }
 
+
+  //Function to delete employee
   deleteEmployee(EmployeeData employeeData) async {
     setBusy(true);
     int result;
-    result = await databaseHelper.deleteEmployee(employeeData);
+    result = await helper.deleteEmployee(employeeData);
     if (result != 0) {
       setBusy(false);
       //Success
@@ -43,6 +45,8 @@ class EmployeeViewModel extends BaseModel {
     }
   }
 
+
+  //Dummy data for Loan record
   Future<List<LoanRecordModel>> get loan async {
     return [
         LoanRecordModel(

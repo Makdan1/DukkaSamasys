@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:dukka_samasys/utils/colors.dart';
-
+//Button widget
 class GeneralButton extends StatelessWidget {
   final Widget child;
   final Function onPressed;

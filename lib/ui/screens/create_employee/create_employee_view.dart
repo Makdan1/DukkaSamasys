@@ -26,16 +26,20 @@ class MoviesState extends State<CreateEmployee> {
             appBar: AppBar(
               backgroundColor: Colors.blueGrey,
               title: Row(
-                mainAxisAlignment: MainAxisAlignment.end,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
-                  VerticalDivider(thickness: 2,color: AppColors.white,),
+                  Container(
+                    width: 3,height: 40,
+                    color: Colors.white,
+                    child: Text(''),
+                  ),
                   Column(
                     mainAxisAlignment: MainAxisAlignment.end,
                     crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
-                      Text('SAMASYS'),
-                      Text('combat salary fraud'),
+                      Text('SAMASYS',style: TextStyle(fontSize:30)),
+                      Text('combat salary fraud',style: TextStyle(fontSize: 10),),
                     ],
                   )
                 ],

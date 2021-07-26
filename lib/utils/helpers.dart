@@ -31,7 +31,7 @@ showErrorToast(String message) {
       webPosition: "center",
       webBgColor: "#e74c3c",
       timeInSecForIosWeb: 5,
-      // backgroundColor: AppColors.red,
+      backgroundColor: AppColors.red,
       textColor: Colors.white,
       fontSize: 16.0);
 }

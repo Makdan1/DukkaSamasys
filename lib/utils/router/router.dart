@@ -1,4 +1,5 @@
 import 'package:dukka_samasys/ui/screens/create_employee/create_employee_view.dart';
+import 'package:dukka_samasys/ui/screens/employees/list_employee.dart';
 import 'package:flutter/material.dart';
 import 'package:dukka_samasys/utils/router/routeNames.dart';
 
@@ -10,6 +11,12 @@ Route<dynamic> generateRoute(RouteSettings settings) {
         routeName: settings.name,
         viewToShow: CreateEmployee(),
       );
+    case EmployeesRoute:
+      return _getPageRoute(
+        routeName: settings.name,
+        viewToShow: Employees(),
+      );
+
 
     default:
       return MaterialPageRoute(

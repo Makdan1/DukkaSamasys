@@ -67,10 +67,24 @@ class DatabaseHelper {
     return messageId;
   }
 
-  Future<List<Map<String, dynamic>>> getEmployeeList() async {
+  Future<List<EmployeeData>> getEmployeeList() async {
     var result = await db.query(employeeTable, orderBy: '$id ASC');
-    return result;
+
+    if (result.length > 0) {
+      List<EmployeeData> chatMessages = [];
+
+      if (result.length > 0) {
+        for (int i = 0; i < result.length; i++) {
+          chatMessages.add(EmployeeData.fromJson(result[i]));
+        }
+      }
+      return chatMessages;
+      //return ChatMessage.fromMap(maps.first);
+    }
+    return null;
   }
+
+
 
   Future<int> updateEmployee(EmployeeData employeeData) async {
     var result = await db.update(employeeTable, employeeData.toJson(),

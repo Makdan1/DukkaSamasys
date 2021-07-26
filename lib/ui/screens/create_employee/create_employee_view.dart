@@ -215,6 +215,11 @@ class MoviesState extends State<CreateEmployee> {
                       ),
                       GeneralButton(
                         buttonText: 'SAVE',
+                        onPressed: () {
+                          if (formKey.currentState.validate()) {
+                            model.saveEmployee();
+                          }
+                        },
                       )
                     ]),
                   )),

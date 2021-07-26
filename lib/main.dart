@@ -1,3 +1,4 @@
+import 'package:dukka_samasys/core/services/database_service.dart';
 import 'package:dukka_samasys/ui/screens/create_employee/create_employee_view.dart';
 import 'package:dukka_samasys/utils/locator.dart';
 import 'package:flutter/material.dart';
@@ -7,8 +8,11 @@ import 'package:dukka_samasys/utils/progressBarManager/dialogService.dart';
 import 'package:dukka_samasys/utils/router/navigationService.dart';
 import 'package:dukka_samasys/utils/router/router.dart';
 
-void main() {
+void main() async{
   WidgetsFlutterBinding.ensureInitialized();
+
+//Initialize the database
+  await DatabaseHelper.initDatabase();
   setupLocator();
   runApp(MyApp());
 }

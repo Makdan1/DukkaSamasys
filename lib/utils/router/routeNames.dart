@@ -5,7 +5,7 @@
 
 
 // Views constant
-const String PostRoute = 'PostPage';
+const String CreateEmployeeRoute = 'CreateEmployeePage';
 
 
 

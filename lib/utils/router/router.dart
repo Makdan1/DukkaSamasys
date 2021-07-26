@@ -1,14 +1,14 @@
+import 'package:dukka_samasys/ui/screens/create_employee/create_employee_view.dart';
 import 'package:flutter/material.dart';
-import 'package:dukka_samasys/ui/screens/movies_list/movies_view.dart';
 import 'package:dukka_samasys/utils/router/routeNames.dart';
 
 Route<dynamic> generateRoute(RouteSettings settings) {
   switch (settings.name) {
 
-    case PostRoute:
+    case CreateEmployeeRoute:
       return _getPageRoute(
         routeName: settings.name,
-        viewToShow: Movies(),
+        viewToShow: CreateEmployee(),
       );
 
     default:

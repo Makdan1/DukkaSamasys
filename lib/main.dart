@@ -31,11 +31,11 @@ class MyApp extends StatelessWidget {
           //DialogManager(child: child);
         }),
       ),
-      theme: ThemeData(
-        textTheme: GoogleFonts.openSansTextTheme(
-          Theme.of(context).textTheme,
-        ),
-      ),
+      // theme: ThemeData(
+      //   textTheme: GoogleFonts.openSansTextTheme(
+      //     Theme.of(context).textTheme,
+      //   ),
+      //),
       navigatorKey: locator<NavigationService>().navigationKey,
       home: CreateEmployee(),
       onGenerateRoute: generateRoute,

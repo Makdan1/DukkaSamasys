@@ -1,6 +1,6 @@
 import 'package:dukka_samasys/ui/screens/employees/emloyee_view_model.dart';
+import 'package:dukka_samasys/ui/screens/employees/employee_detail.dart';
 import 'package:dukka_samasys/ui/widget/employee_widget/employee_item.dart';
-import 'package:dukka_samasys/utils/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 
@@ -15,7 +15,7 @@ class EmployeesState extends State<Employees> {
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder<EmployeeViewModel>.reactive(
-        onModelReady: (v){
+        onModelReady: (v) {
           v.getEmployees();
         },
         viewModelBuilder: () => EmployeeViewModel(),
@@ -28,7 +28,8 @@ class EmployeesState extends State<Employees> {
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
                     Container(
-                      width: 3,height: 40,
+                      width: 3,
+                      height: 40,
                       color: Colors.white,
                       child: Text(''),
                     ),
@@ -36,60 +37,71 @@ class EmployeesState extends State<Employees> {
                       mainAxisAlignment: MainAxisAlignment.end,
                       crossAxisAlignment: CrossAxisAlignment.end,
                       children: [
-                        Text('SAMASYS',style: TextStyle(fontSize:30)),
-                        Text('combat salary fraud',style: TextStyle(fontSize: 10),),
+                        Text('SAMASYS', style: TextStyle(fontSize: 28)),
+                        Text(
+                          'combat salary fraud',
+                          style: TextStyle(fontSize: 10),
+                        ),
                       ],
                     )
                   ],
-                ) ,
+                ),
               ),
-              body: Column(
-                  children: [
-                    model.employeeDataList.isEmpty
-                        ? Container(
-                      child: Text('EMPTY'),
-                    ) :
-                    Expanded(
-                        child: Container(
-                            child: ListView.builder(
-                                shrinkWrap: true,
-                                // physics: NeverScrollableScrollPhysics(),
-                                itemCount:
-                                model.employeeDataList.length,
-                                itemBuilder: (BuildContext context,
-                                    int index) {
-                                  var data = model.employeeDataList[index];
-                                  return
-                                    EmployeeItem(
-                                      employeeData: data,
-                                      // onCall: () async{
-                                      //   contact = await model.getSinglePackage(feed.id.toString());
-                                      //   callStore();
-                                      // },
-                                      //onTap: () {
-                                      // attendanceDialog(
-                                      //     model, feed.pinCode, feed.responsibility);
-                                      // model.takeAttendanceTeachers(status, teacherPinCode)
-                                      // deleteAlert(
-                                      //     model, feed.id.toString());
-                                      //},
-                                      // onEdit: () {
-                                      //   Navigator.push<void>(
-                                      //     context,
-                                      //     MaterialPageRoute<void>(
-                                      //       builder:
-                                      //           (BuildContext context) =>
-                                      //           TeacherEditPage(
-                                      //               teacherDetails:
-                                      //               feed),
-                                      //     ),
-                                      //   );
-                                      // },
-                                    );
-                                }
-
-                            )))
-                  ]));
+              body: model.employeeDataList.isEmpty
+                  ? Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Center(
+                          child: Text(
+                            'No Employee added yet',
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold, fontSize: 25),
+                          ),
+                        )
+                      ],
+                    )
+                  : Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                          SizedBox(
+                            height: 20,
+                          ),
+                          Padding(
+                              padding: EdgeInsets.only(left: 20),
+                              child: Text(
+                                'Employees',
+                                style: TextStyle(fontSize: 23),
+                              )),
+                          Expanded(
+                              child: Container(
+                                  child: ListView.builder(
+                                      shrinkWrap: true,
+                                      // physics: NeverScrollableScrollPhysics(),
+                                      itemCount: model.employeeDataList.length,
+                                      itemBuilder:
+                                          (BuildContext context, int index) {
+                                        var data =
+                                            model.employeeDataList[index];
+                                        return EmployeeItem(
+                                          employeeData: data,
+                                          onTap: () {
+                                            Navigator.push(
+                                                context,
+                                                MaterialPageRoute<void>(
+                                                  builder:
+                                                      (BuildContext context) =>
+                                                          EmployeeDetail(
+                                                    employeeData: data,
+                                                  ),
+                                                ));
+                                          },
+                                          onDelete: () {
+                                            model.deleteEmployee(data);
+                                          },
+                                        );
+                                      })))
+                        ]));
         });
   }
 }

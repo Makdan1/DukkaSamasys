@@ -93,9 +93,10 @@ class DatabaseHelper {
   }
 
   //Delete Operation: Delete an Employee object from database
-  Future<int> deleteEmployee(int employeeId) async {
+  Future<int> deleteEmployee(EmployeeData employeeData) async {
+    print(employeeData.phoneNumber);
     int result =
-        await db.rawDelete('DELETE FROM $employeeTable WHERE $id  = $employeeId');
+    await db.delete(employeeTable, where: '$phoneNumber = ?', whereArgs: [employeeData.phoneNumber]);
     return result;
   }
 }

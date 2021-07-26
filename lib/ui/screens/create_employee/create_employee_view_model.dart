@@ -5,6 +5,7 @@ import 'package:dukka_samasys/utils/baseModel.dart';
 import 'package:dukka_samasys/utils/helpers.dart';
 import 'package:dukka_samasys/utils/locator.dart';
 import 'package:dukka_samasys/utils/router/navigationService.dart';
+import 'package:dukka_samasys/utils/router/routeNames.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
@@ -40,6 +41,7 @@ class CreateEmployeeViewModel extends BaseModel {
       //Success
       showToast("Employee saved successfully");
       clear();
+      _navigationService.navigateTo(EmployeesRoute);
     } else {
       setBusy(false);
       // Failure
